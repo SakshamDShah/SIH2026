@@ -1,167 +1,129 @@
-# AgriSmart AI – Intelligent Agriculture for a Sustainable Future
+# 🌾 AgriSmart AI — Intelligent Agriculture for a Sustainable Future
 
-[![SIH-2026 Internal Hackathon](https://img.shields.io/badge/SIH--2026-Problem%20Statement%201-success)](#)
-[![Domain](https://img.shields.io/badge/Domain-AI%20%2F%20AgriTech%20%2F%20Sustainability-2d6a4f)](#)
-[![Macro-F1](https://img.shields.io/badge/Held--out%20Macro--F1-0.887-brightgreen)](#)
+**SIH 2026 (Internal Hackathon) — Problem Statement 1 — L. J. Institute of Engineering and Technology [C-433]**
 
-> **"AI-powered crop health at your fingertips"**  
-> A modern, farmer-friendly, and production-ready web application designed for fast, accurate plant disease diagnosis, visual explainability, and smart agricultural sustainability advisory.
+🔗 **Live Demo:** https://sih2026-quza.onrender.com
+*(Free-tier hosting — the app may take 30–60s to wake up if it's been idle for a while.)*
 
----
-
-## 🌟 Highlights & Key Capabilities
-
-1. **Core Crop Disease Detection**:
-   - Accepts leaf images via Drag & Drop, File Upload, or Live Camera snapshot.
-   - Built-in **1-Click Test Samples** for instant evaluation (Tomato Early Blight, Healthy Tomato, Potato Late Blight, Blurry/Dark leaf, and Uncertain sample).
-2. **Automated Image Quality Gate**:
-   - Pre-prediction quality inspection evaluating luminance (underexposure / glare), edge sharpness variance (blur detection), and leaf vegetation color ratio.
-   - Displays clear farmer-friendly diagnostic meters and recommendations if quality is too low.
-3. **AI Scanning Animation & Multi-Stage Processing**:
-   - Attractive laser sweep animation with reticle tracking and stepped milestones:
-     - *"AI is analyzing your crop..."*
-     - *"Detecting visual patterns..."*
-     - *"Checking disease indicators..."*
-4. **Three Distinct AI Result States**:
-   - **Disease Detected State**: Large circular confidence gauge (e.g. 91%), Health Status: *At Risk*, Visual Lesion Heatmap, and Actionable Precautions.
-   - **Healthy Crop State**: High-confidence green verification (e.g. 94%), Health Status: *Healthy*, proactive maintenance advice.
-   - **Low-Confidence / Uncertain State**: Unambiguous advisory (e.g. 42%), instructing the farmer how to re-capture without forcing a false diagnosis.
-5. **Visual Explainability ("Why did AI detect this?")**:
-   - Interactive leaf viewer with toggleable Heatmap and Lesion bounding overlays (🔴 Brown necrotic spots, 🟠 Chlorotic yellow halos, 🟡 Irregular fungal margins).
-   - Plain-language AI explanation note with non-guaranteed diagnosis disclaimer.
-6. **Farmer-Centric Advisory & Accessibility**:
-   - Actionable cultural precautions checklist (pruning, drip irrigation, sanitization).
-   - Regulatory safety warning before pesticide application.
-   - **Farmer Voice Reader (Speech Synthesis)**: Speaks out diagnosis and precautions aloud at a comfortable tempo for rural farmers.
-   - **Regional Language Localization**: Instant language toggle for English, हिन्दी (Hindi), ગુજરાતી (Gujarati), and ਪੰਜਾਬੀ (Punjabi).
-7. **Farmer Dashboard & Full Hackathon Bonus Suite**:
-   - **Bonus Module A (Crop Recommendation)**: Soil type, pH, temperature, and seasonal suitability match.
-   - **Bonus Module B (Smart Irrigation Intelligence)**: Evaluates soil moisture alongside 24h weather forecast to recommend optimal watering or delay.
-   - **Bonus Module D (Sustainability Score)**: Indicative 84/100 score with stated reproducible formula ($S = 0.45 W_{eff} + 0.35 C_{run} + 0.20 H_{crop}$).
-   - **Bonus Module E (Farmer Assistant)**: Plain-language audio guidance in regional languages.
-   - **Bonus Module F (Simulated IoT Telemetry)**: Live sensor stream of Soil Moisture, Soil Temp, Ambient Humidity, and NPK with real-time canvas sparkline graph.
-   - **Bonus Module G (Agentic Advisor Loop)**: Documented autonomous loop (Sense &rarr; Reason &rarr; Decide &rarr; Advise).
-8. **Scan History & Printable Advisory**:
-   - LocalStorage persisted scan log with search and status filtering.
-   - Full inspection modal for past scans.
-   - Formatted Krishi Advisory Print/Export sheet.
+🎥 **Demo Video:** _[add your 3–5 minute video link here before final submission]_
 
 ---
 
-## 🚀 Quick Start Instructions
+## 1. Modules Built
 
-This is a self-contained, zero-dependency modern web application. No complex build tools or local package installs are required to run the UI immediately.
+| Module | Status |
+|---|---|
+| **Core — Crop Disease Detection (Computer Vision)** | ✅ Implemented |
+| B. Smart Irrigation | ✅ Implemented |
+| C. Weather-Based Intelligence | ✅ Implemented |
+| E. Farmer Assistant (GenAI chatbot) | ✅ Implemented |
+| F. IoT Integration | ✅ Implemented (simulated sensor feed, as explicitly permitted by the problem statement) |
+| A. Crop Recommendation | 🚧 UI scaffold present — backend logic in progress |
+| D. Sustainability Score | 🚧 UI scaffold present — backend logic in progress |
+| G. Agentic Advisor | 🚧 UI scaffold present — decision loop in progress |
 
-### Option 1: Direct Browser Launch
-Simply open `index.html` in any modern web browser (Google Chrome, Microsoft Edge, Safari, Firefox):
+---
+
+## 2. Setup & Run Instructions
+
+### Option A — Use the Live Demo (fastest)
+Just open **https://sih2026-quza.onrender.com** — no setup required. Choose "Continue as Guest" to try it immediately.
+
+### Option B — Run Locally (for reproducibility verification)
+
+**Prerequisites:** Python 3.10+ (tested on 3.14), pip.
+
 ```bash
-# On Windows PowerShell:
-Start-Process index.html
+# 1. Clone the repo
+git clone https://github.com/SakshamDShah/SIH2026.git
+cd SIH2026/backend
+
+# 2. Install dependencies (CPU-only PyTorch to keep this lightweight)
+pip install -r requirements.txt
+
+# 3. Configure environment variables
+cp .env.example .env
+# then edit .env and fill in MONGO_URI and GROQ_API_KEY with your own values
+# (the app runs without them, but login/history and the AI chatbot will be disabled)
+
+# 4. Run the server
+python app.py
 ```
 
-### Option 2: Local Web Server (Recommended)
-You can serve the directory using any static web server:
-```bash
-# Using Python:
-python -m http.server 8000
-
-# Using Node / npx:
-npx serve .
-```
-Then navigate to `http://localhost:8000`.
+Then open **http://localhost:5000** in a browser. The app must reproduce a prediction in well under 10 minutes from a clean clone, per the submission rules.
 
 ---
 
-## 🔌 API Integration & Contract (Section 4.1 Compliance)
+## 3. Dataset Used
 
-The application includes an offline, highly realistic mock prediction engine, and can also be instantly connected to any live backend endpoint via the built-in **Settings (⚙️)** modal.
-
-### API Endpoint Specification
-- **Method**: `POST`
-- **Path**: `/api/predict`
-- **Request Body**:
-  ```json
-  {
-    "image": "data:image/jpeg;base64,..."
-  }
-  ```
-
-- **Response Body (200 OK)**:
-  ```json
-  {
-    "class": "Tomato Early Blight",
-    "confidence": 0.91,
-    "health_status": "At Risk",
-    "explanation": [
-      {
-        "type": "brown_spots",
-        "label": "Brown spots detected",
-        "color": "#ef4444",
-        "description": "Concentric target-like rings with dark brown necrotic centers."
-      },
-      {
-        "type": "discoloration",
-        "label": "Leaf discoloration detected",
-        "color": "#f97316",
-        "description": "Chlorotic yellow halo surrounding necrotic lesions."
-      }
-    ],
-    "text_explanation": "Brown lesions and surrounding yellowing were the strongest visual indicators associated with this prediction.",
-    "precautions": [
-      "Remove severely affected leaves",
-      "Avoid unnecessary overhead watering",
-      "Monitor nearby plants",
-      "Recheck the crop regularly"
-    ]
-  }
-  ```
+- **Training/validation:** [PlantVillage](https://www.kaggle.com/datasets/emmarex/plantdisease) (lab-condition leaf images), as provided at kickoff.
+- **Held-out evaluation:** organizers' field-condition test set (PlantDoc-style), used only for official scoring — not used in training.
+- **Classes:** 16 total (see `class_names.json`) covering Bell Pepper, Potato, and Tomato — healthy and diseased.
+- License: PlantVillage is publicly available for research use; cite the original dataset paper/source in any publication.
 
 ---
 
-## 📊 One-Page Model Report (Section 7.3 Compliance)
+## 4. Reported Metrics
 
-| Field | Description / Value |
-| :--- | :--- |
-| **Task** | Crop-disease leaf image classification across 18 shared classes + healthy. |
-| **Dataset & Split** | **Train/Val**: PlantVillage (~54,000 lab images, 80/20 split) with extensive data augmentation.<br>**Held-Out Test**: PlantDoc field-condition real-world dataset (natural lighting, clutter, occlusion). |
-| **Model / Backbone** | MobileNetV3-Large & EfficientNet-B0 transfer learning backbones with CutMix, RandomAffine, ColorJitter, and Cosine Annealing learning rate schedule. |
-| **Primary Metric** | **Macro-averaged F1: 0.887** on held-out field test set (Accuracy: 91.2%). |
-| **Baseline Comparison** | Outperforms baseline benchmark (0.78 Macro-F1) by **+0.107** through robust field-condition invariance modeling. |
-| **Honest Limitations** | Degrades in extreme specular sun glare, multi-pathogen co-infections on a single leaf, and nighttime flash photography. Handled by the client-side Image Quality Gate. |
+> ⚠️ **To be completed before submission.** The current pipeline (`train_model.py`) reports train/validation accuracy only. The hackathon requires **macro-averaged F1** and a **confusion matrix** computed on the organizers' held-out field-condition test set — this still needs to be run and the results filled in below.
+
+| Metric | Value |
+|---|---|
+| Macro-F1 (held-out test set) | _TBD_ |
+| Accuracy (held-out test set) | _TBD_ |
+| Train accuracy | _see training logs_ |
+| Validation accuracy | _see training logs_ |
+
+Confusion matrix and per-class precision/recall: _add image/table here once evaluation is run._
 
 ---
 
-## 🌿 Directory Structure
+## 5. Architecture Overview
+
+- **Backend:** Flask (Python), serving both the REST API and the static frontend from a single origin.
+- **Computer Vision Model:** MobileNetV2 (ImageNet-pretrained), fine-tuned with a custom classification head — `Dropout → Linear(256) → ReLU → Dropout → Linear(num_classes)`. Last two feature blocks unfrozen for fine-tuning; rest frozen.
+- **Database:** MongoDB Atlas — stores user accounts (hashed passwords) and scan history.
+- **Generative AI:** Groq API (`openai/gpt-oss-120b`) — powers the farmer chatbot and short weather-advisory text, grounded in a hand-curated disease knowledge base (`disease_info.py`).
+- **Weather Data:** Open-Meteo API — live temperature, humidity, weather code, and rain probability, feeding the rule-based irrigation/fungal-risk logic.
+- **Frontend:** HTML/CSS/vanilla JavaScript, multi-tab single-page layout (Home, Today, Detect, Insights, History, About), with a regional-language selector and Google Translate integration for accessibility.
+- **Deployment:** Render (free tier), CPU-only PyTorch build, Gunicorn as the production WSGI server.
+
+---
+
+## 6. Known Limitations
+
+- Core metric (macro-F1 on the held-out set) has not yet been computed — see Section 4.
+- Bonus modules A (Crop Recommendation), D (Sustainability Score), and G (Agentic Advisor) currently have frontend UI but placeholder/static backend logic — not yet driven by real models or live decision loops.
+- Model is trained on lab-condition images; per the problem statement's own framing, accuracy is expected to degrade on real-world field photos — this is the core challenge, not a bug, and is why held-out field evaluation matters more than training accuracy.
+- Free-tier hosting has a cold-start delay (~30–60s) after periods of inactivity, and a 512MB memory ceiling — large image uploads or concurrent requests could be constrained; `gunicorn` is configured with `--workers 1 --threads 2 --max-requests 20` to mitigate memory creep from repeated PyTorch inference calls.
+- `assets/bg.jpg` and any additional static assets referenced by the frontend should be confirmed present in the repo before judging.
+
+---
+
+## 7. Originality Declaration
+
+- Base architecture: MobileNetV2 via `torchvision.models`, pretrained on ImageNet (Torchvision/PyTorch, BSD-style license).
+- Dataset: PlantVillage (public dataset, cited above).
+- Third-party libraries: Flask, Flask-CORS, PyMongo, Groq Python SDK, python-dotenv, Pillow, Gunicorn — all open-source, used per their standard APIs.
+- No third-party notebooks or pre-built solutions were copied; the Flask app, training script, and frontend were built specifically for this challenge.
+- AI coding assistance (Claude) was used during development for debugging, deployment configuration, and documentation — per the hackathon's stated allowance for AI coding assistants.
+
+---
+
+## 8. Project Structure
 
 ```
-agrismart-ai/
-├── index.html              # Main application shell with semantic UI & modals
-├── README.md               # Documentation, evaluation report, and API specs
-├── css/
-│   ├── main.css            # Agricultural design system tokens, typography, layout
-│   ├── scan.css            # Dropzone, camera, laser scan animation, heatmap canvas
-│   ├── dashboard.css       # KPI cards, weather, smart irrigation, IoT telemetry
-│   └── history.css         # Scan log table, search & filters, printable advisory
-├── js/
-│   ├── app.js              # Application router, i18n localization, voice reader
-│   ├── qualityCheck.js     # Client-side image quality & framing validator
-│   ├── scanner.js          # Camera capture, file upload, animation & result states
-│   ├── aiEngine.js         # API connector, inference simulator, heatmap drawer
-│   ├── dashboard.js        # IoT live feed, microclimate intelligence, advisor logic
-│   └── history.js          # LocalStorage scan persistence & detail modal
-└── assets/
-    └── samples/
-        └── sampleImages.js # Embedded high-resolution vector crop leaf samples
+SIH2026/
+├── index.html, login.html          # Frontend pages
+├── css/, js/, assets/              # Frontend static files
+└── backend/
+    ├── app.py                      # Flask app (API + frontend serving)
+    ├── train_model.py              # Model training script
+    ├── verify_dataset.py           # Dataset sanity-check utility
+    ├── disease_info.py             # Disease knowledge base
+    ├── class_names.json            # Ordered class label list
+    ├── crop_disease_model.pth      # Trained model weights
+    ├── requirements.txt            # Python dependencies (CPU-only PyTorch)
+    ├── .env.example                # Environment variable template
+    └── .gitignore
 ```
-
----
-
-## 🏆 SIH 2026 Hackathon Alignment
-
-- **Core Task**: Identifies crop diseases, provides visual explanations, and surfaces actionable farmer precautions.
-- **Bonus A**: Crop recommendation based on soil and seasonal parameters.
-- **Bonus B**: Smart irrigation advisory synthesizing soil moisture and precipitation forecasts.
-- **Bonus D**: Sustainability Score ($S$) quantifying water conservation and chemical runoff reduction.
-- **Bonus E**: Farmer Assistant with plain-language explanations, audio voice reader, and regional language support.
-- **Bonus F**: Simulated live IoT sensor feed with real-time dynamic trend charts.
-- **Bonus G**: Autonomous Agentic Advisor loop (Sense &rarr; Reason &rarr; Decide &rarr; Advise).
