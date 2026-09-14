@@ -3,9 +3,13 @@ flask-cors
 python-dotenv
 pymongo
 groq
-torch
-torchvision
 pillow
 requests
 werkzeug
 gunicorn
+
+# CPU-only PyTorch build — Render's free tier has no GPU, so this avoids
+# downloading ~2GB of unused CUDA/NVIDIA packages and speeds up builds a lot.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+torchvision
