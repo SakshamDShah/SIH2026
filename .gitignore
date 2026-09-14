@@ -1,27 +1,16 @@
+# Secrets — never commit real environment values
+.env
+_env
+
 # Python
 __pycache__/
 *.pyc
-
-# Virtual environments
-venv/
+*.pyo
 .venv/
-env/
+venv/
 
-# Secrets
-.env
-.env.*
-
-# Node
-node_modules/
-
-# Logs
-*.log
-
-# IDE
+# OS/editor junk
+.DS_Store
+Thumbs.db
 .vscode/
-
-# Python cache
-.pytest_cache/
-
-# Dataset
-dataset/
+.idea/
