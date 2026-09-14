@@ -1,0 +1,11 @@
+flask
+flask-cors
+python-dotenv
+pymongo
+groq
+torch
+torchvision
+pillow
+requests
+werkzeug
+gunicorn
