@@ -552,4 +552,8 @@ def weather_advisory():
         }), 200
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Render (and most cloud hosts) assign a dynamic port via the PORT env var.
+    # Locally, this falls back to 5000 exactly like before.
+    port = int(os.environ.get("PORT", 5000))
+    debug_mode = os.environ.get("FLASK_DEBUG", "true").lower() == "true"
+    app.run(host="0.0.0.0", port=port, debug=debug_mode)
