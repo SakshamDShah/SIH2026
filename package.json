@@ -1,0 +1,21 @@
+{
+  "name": "sih",
+  "version": "1.0.0",
+  "description": "[![SIH-2026 Internal Hackathon](https://img.shields.io/badge/SIH--2026-Problem%20Statement%201-success)](#) [![Domain](https://img.shields.io/badge/Domain-AI%20%2F%20AgriTech%20%2F%20Sustainability-2d6a4f)](#) [![Macro-F1](https://img.shields.io/badge/Held--out%20Macro--F1-0.887-brightgreen)](#)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.9.5",
+    "multer": "^2.3.0"
+  },
+  "devDependencies": {}
+}

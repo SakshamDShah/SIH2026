@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Secrets
+.env
+.env.*
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+
+# Python cache
+.pytest_cache/
+
+# Dataset
+dataset/

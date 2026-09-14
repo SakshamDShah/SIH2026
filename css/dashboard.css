@@ -1,0 +1,544 @@
+/* ==========================================================================
+   AgriSmart AI - Farmer Dashboard & Bonus Insights Styles
+   KPI Cards, Microclimate, IoT Sensors, Sustainability Score, Smart Irrigation
+   ========================================================================== */
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Hero Status Banner */
+.hero-status-banner {
+  background: linear-gradient(135deg, var(--primary-forest), var(--primary-deep));
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-status-banner::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  bottom: -40px;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(82, 183, 136, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-greeting h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-greeting p {
+  color: #d8f3dc;
+  font-size: 0.95rem;
+  max-width: 580px;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+/* Active Warning Banner */
+.active-warning-bar {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-left: 6px solid #d97706;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.warning-bar-content {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  color: #92400e;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.warning-bar-icon {
+  font-size: 1.4rem;
+  color: #d97706;
+}
+
+/* KPI Summary 4-Column Grid */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+
+.kpi-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-normal);
+  position: relative;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-mint);
+}
+
+.kpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.kpi-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpi-icon-pill {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.kpi-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.kpi-big-number {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.kpi-unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.kpi-footer-status {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Dashboard Multi-Column Layout */
+.dashboard-columns-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Microclimate & Weather Card */
+.weather-card {
+  background: linear-gradient(135deg, #ffffff, #f7fafc);
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.weather-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.weather-temp-block {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.weather-symbol {
+  font-size: 3rem;
+}
+
+.weather-temp {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.weather-condition-sub {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.weather-stats-subgrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.weather-mini-stat {
+  background: var(--bg-sand);
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.weather-mini-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.weather-mini-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary-forest);
+}
+
+/* Smart Irrigation Card (Bonus Module B) */
+.irrigation-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.irrigation-recommendation-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+  margin: 1rem 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.irrigation-rec-title {
+  font-weight: 700;
+  color: #1e40af;
+  font-size: 1.05rem;
+  margin-bottom: 0.2rem;
+}
+
+.irrigation-rec-text {
+  font-size: 0.9rem;
+  color: #1e3a8a;
+}
+
+/* Sustainability Score Card (Bonus Module D) */
+.sustainability-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sustainability-gauge-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}
+
+.sustainability-breakdown-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.sustainability-sub-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sustainability-formula-tag {
+  background: var(--bg-sand);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.8rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: monospace;
+  margin-top: 0.75rem;
+}
+
+/* Simulated IoT Telemetry Stream (Bonus Module F) */
+.iot-telemetry-card {
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.iot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.iot-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.pulsing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulseGreen 1.5s infinite;
+}
+
+@keyframes pulseGreen {
+  0% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+  70% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.9); opacity: 0.7; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.iot-sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.iot-sensor-box {
+  background: var(--bg-sand);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  text-align: center;
+}
+
+.sensor-name {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.sensor-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--primary-forest);
+  margin: 0.2rem 0;
+}
+
+.sensor-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary-leaf);
+}
+
+.iot-sparkline-canvas {
+  width: 100%;
+  height: 90px;
+  background: #fdfbf7;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-soft);
+}
+/* Task Container Styles */
+.task-container {
+  padding: 0;
+  overflow: hidden;
+}
+
+.task-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-soft, #e5e7eb);
+  transition: background-color 0.2s ease;
+}
+
+.task-card-item:last-child {
+  border-bottom: none;
+}
+
+.task-card-item:hover {
+  background-color: var(--bg-sand, #fdfbf7);
+}
+
+.task-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.task-checkbox {
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: var(--primary-leaf, #2d6a4f);
+}
+
+.task-time {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--primary-leaf, #2d6a4f);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary, #1f2937);
+  margin: 0.2rem 0;
+}
+
+.task-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary, #4b5563);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Completed Task State */
+.task-card-item.is-completed {
+  opacity: 0.6;
+  background-color: rgba(243, 244, 246, 0.5);
+}
+
+.task-card-item.is-completed .task-title {
+  text-decoration: line-through;
+}
+/* Task Container & Card Layout */
+.task-container {
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border-soft, #e5e7eb);
+}
+
+.task-card-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-soft, #e5e7eb);
+  transition: background-color 0.2s ease;
+}
+
+.task-card-item:last-child {
+  border-bottom: none;
+}
+
+.task-card-item:hover {
+  background-color: #fdfbf7;
+}
+
+.task-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.task-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  accent-color: #2d6a4f;
+}
+
+.task-time {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #2d6a4f;
+  text-transform: uppercase;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0.2rem 0;
+}
+
+.task-desc {
+  font-size: 0.88rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.task-card-item.is-completed {
+  opacity: 0.6;
+  background-color: rgba(243, 244, 246, 0.5);
+}
+
+.task-card-item.is-completed .task-title {
+  text-decoration: line-through;
+}
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .dashboard-columns-grid {
+    grid-template-columns: 1fr;
+  }
+}

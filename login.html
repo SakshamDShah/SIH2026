@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrismart AI - Authentication</title>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+        body {
+            min-height: 100vh;
+            background-image: url("assets/bg.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex; justify-content: flex-end; align-items: center; padding: 40px 7%;
+        }
+
+        .login-card {
+            width: 400px; padding: 38px 42px; border-radius: 24px;
+            background: rgba(255, 255, 255, 0.42);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+            color: #123d2d; position: relative; overflow: hidden;
+        }
+
+        .logo-section { text-align: center; margin-bottom: 25px; }
+        .logo { display: flex; justify-content: center; align-items: center; gap: 8px; font-size: 28px; font-weight: 700; color: #075c3b; }
+        .tagline { margin-top: 5px; font-size: 12px; color: #52665c; }
+        h1 { text-align: center; font-size: 28px; color: #123d2d; margin-bottom: 7px; }
+        .subtitle { text-align: center; font-size: 14px; color: #53665d; margin-bottom: 24px; }
+
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 7px; color: #29483b; }
+        .input-container { position: relative; }
+        .input-container input { 
+            width: 100%; height: 46px; padding: 0 45px; border-radius: 11px; 
+            border: 1px solid rgba(255, 255, 255, 0.75); background: rgba(255, 255, 255, 0.38); 
+            outline: none; font-size: 14px; color: #173c2d; transition: 0.25s; 
+        }
+        .input-container input:focus { background: rgba(255, 255, 255, 0.65); border-color: #168052; box-shadow: 0 0 0 3px rgba(22, 128, 82, 0.12); }
+        .input-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); font-size: 16px; color: #527565; }
+        .password-eye { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #527565; }
+
+        .auth-btn { 
+            width: 100%; height: 48px; border: none; border-radius: 11px; margin-top: 10px;
+            background: linear-gradient(135deg, #087a4c, #20a85c); color: white; 
+            font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(8, 122, 76, 0.25); transition: 0.25s; 
+        }
+        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 25px rgba(8, 122, 76, 0.35); }
+        
+        .divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: #718078; font-size: 12px; }
+        .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: rgba(255, 255, 255, 0.75); }
+
+        .google-btn { 
+            width: 100%; height: 46px; border-radius: 11px; border: 1px solid rgba(255, 255, 255, 0.75); 
+            background: rgba(255, 255, 255, 0.38); display: flex; justify-content: center; align-items: center; 
+            gap: 10px; color: #34453e; font-size: 14px; font-weight: 600; cursor: pointer; transition: 0.25s; margin-bottom: 12px; 
+        }
+        .google-btn:hover { background: rgba(255, 255, 255, 0.65); }
+
+        .toggle-text { text-align: center; margin-top: 20px; font-size: 13px; color: #65736d; }
+        .toggle-text a { color: #087a4c; font-weight: 700; text-decoration: none; cursor: pointer; }
+        .toggle-text a:hover { text-decoration: underline; }
+
+        /* Form Toggling Logic */
+        .form-section { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .form-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) { body { justify-content: center; padding: 25px; } .login-card { width: 400px; max-width: 100%; } }
+    </style>
+</head>
+
+<body>
+    <div class="login-card">
+        <div class="logo-section">
+            <div class="logo"><span class="leaf">🌿</span> Agrismart AI</div>
+            <div class="tagline">Smarter Farming. Healthier Tomorrow.</div>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginSection" class="form-section active">
+            <h1>Welcome Back</h1>
+            <p class="subtitle">Login to continue to your account</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-container">
+                        <span class="input-icon">✉</span>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-container">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        <span class="password-eye" onclick="togglePassword('loginPassword')">👁</span>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn" id="btnLogin">Login</button>
+            </form>
+
+            <div class="divider"><span>or</span></div>
+            <button type="button" class="google-btn" style="border-color: #168052; color: #168052;" onclick="loginAsGuest()">
+                👤 Continue as Guest
+            </button>
+
+            <div class="toggle-text">
+                Don't have an account? <a onclick="toggleForms()">Sign up</a>
+            </div>
+        </div>
+
+        <!-- SIGN UP FORM -->
+        <div id="signupSection" class="form-section">
+            <h1>Create Account</h1>
+            <p class="subtitle">Join Agrismart AI today</p>
+
+            <form id="signupForm">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <div class="input-container">
+                        <span class="input-icon">✉</span>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-container">
+                        <span class="input-icon">🔒</span>
+                        <input type="password" id="signupPassword" placeholder="Create a password" required minlength="6">
+                        <span class="password-eye" onclick="togglePassword('signupPassword')">👁</span>
+                    </div>
+                </div>
+                <button type="submit" class="auth-btn" id="btnSignup">Sign Up</button>
+            </form>
+
+            <div class="divider"><span>or</span></div>
+            <button type="button" class="google-btn" style="border-color: #168052; color: #168052;" onclick="loginAsGuest()">
+                👤 Continue as Guest
+            </button>
+
+            <div class="toggle-text">
+                Already have an account? <a onclick="toggleForms()">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Toggle Password Visibility
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            input.type = input.type === "password" ? "text" : "password";
+        }
+
+        // Switch between Login and Sign Up UI
+        function toggleForms() {
+            const loginSec = document.getElementById('loginSection');
+            const signupSec = document.getElementById('signupSection');
+            if (loginSec.classList.contains('active')) {
+                loginSec.classList.remove('active');
+                signupSec.classList.add('active');
+            } else {
+                signupSec.classList.remove('active');
+                loginSec.classList.add('active');
+            }
+        }
+
+        // Guest Login
+        function loginAsGuest() {
+            sessionStorage.removeItem("agrismart_scan_history_guest_session");
+            sessionStorage.removeItem("agrismart_scan_history_guest");
+            localStorage.removeItem("agrismart_scan_history_guest_session");
+            localStorage.removeItem("agrismart_scan_history_guest");
+            localStorage.removeItem("farmTaskHistory");
+            sessionStorage.clear();
+
+            const guestUser = { role: "guest", userId: "guest_session", email: "Guest Farmer" };
+            sessionStorage.setItem("agrismart_user", JSON.stringify(guestUser));
+            window.location.href = "/";
+        }
+
+        // Sign Up Logic
+        document.getElementById("signupForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById("btnSignup");
+            btn.textContent = "Creating Account..."; btn.disabled = true;
+
+            const email = document.getElementById("signupEmail").value;
+            const password = document.getElementById("signupPassword").value;
+
+            try {
+                const res = await fetch("/api/signup", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+                
+                if (res.ok) {
+                    alert("Account created successfully! You can now log in.");
+                    toggleForms(); // Switch back to login screen
+                    document.getElementById("loginEmail").value = email;
+                } else {
+                    alert("Sign up failed: " + data.error);
+                }
+            } catch (err) {
+                alert("Server error. Ensure app.py is running.");
+            }
+            btn.textContent = "Sign Up"; btn.disabled = false;
+        });
+
+        // Login Logic
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById("btnLogin");
+            btn.textContent = "Logging in..."; btn.disabled = true;
+
+            const email = document.getElementById("loginEmail").value;
+            const password = document.getElementById("loginPassword").value;
+
+            try {
+                const res = await fetch("/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    localStorage.setItem("agrismart_user", JSON.stringify(data));
+                    window.location.href = "/"; 
+                } else {
+                    alert("Login failed: " + (data.error || "Invalid credentials"));
+                }
+            } catch (err) {
+                alert("Server error. Ensure app.py is running.");
+            }
+            btn.textContent = "Login"; btn.disabled = false;
+        });
+    </script>
+</body>
+</html>

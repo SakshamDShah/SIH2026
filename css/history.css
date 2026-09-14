@@ -1,0 +1,171 @@
+/* ==========================================================================
+   AgriSmart AI - Scan History & Printable Advisory Styles
+   ========================================================================== */
+
+.history-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* History Controls Toolbar */
+.history-toolbar {
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+}
+
+.history-search-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.85rem;
+  flex: 1;
+  min-width: 240px;
+}
+
+.history-search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  width: 100%;
+}
+
+.history-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-select {
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  outline: none;
+  cursor: pointer;
+}
+
+/* History Table */
+.history-table-card {
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.history-table th {
+  background: var(--bg-sand);
+  padding: 0.9rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.history-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.92rem;
+  vertical-align: middle;
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
+}
+
+.history-table tbody tr {
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.history-table tbody tr:hover {
+  background-color: #f7faf7;
+}
+
+.crop-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.crop-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.crop-thumb img, .crop-thumb svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.crop-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.crop-variety {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.disease-cell {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Printable Advisory Sheet Formatting */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-advisory, .printable-advisory * {
+    visibility: visible;
+  }
+  .printable-advisory {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
