@@ -78,18 +78,6 @@ Then open **http://localhost:5000**. A judge should reach a working prediction i
 - **Classes:** 16 total (`class_names.json`) — Bell Pepper, Potato, and Tomato, each healthy or diseased.
 - Both datasets are public and used here for research/educational purposes; original authors credited above.
 
-## Reported Metrics
-
-> ⚠️ To be finalized: run `evaluate.py` against the organized PlantDoc test folder, then replace the values below.
-
-| Metric | Value |
-|---|---|
-| Macro-F1 (held-out test set) | _TBD_ |
-| Accuracy (held-out test set) | _TBD_ |
-| Train / Validation accuracy | _see training console output_ |
-
-Confusion matrix and per-class precision/recall: generated at `report/confusion_matrix.png` and `report/per_class_metrics.csv` once `evaluate.py` is run.
-
 ## Architecture Overview
 
 - **Backend:** Flask, serving both the REST API and the static frontend from a single origin.
