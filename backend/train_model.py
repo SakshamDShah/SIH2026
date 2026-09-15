@@ -11,7 +11,7 @@ from torchvision import datasets, transforms, models
 # Configuration & Hyperparameters (Fast CPU High-Accuracy Mode)
 # ----------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATASET_DIR = os.path.abspath(os.path.join(BASE_DIR, "..", "dataset"))
+DATASET_DIR = r"D:\UPDATED_AGRISMART\AGRISMART\AGRISMART\SIH - sak2\SIH - SAKSHAM\SIH - SAKSHAM\dataset"
 MODEL_SAVE_PATH = os.path.join(BASE_DIR, "crop_disease_model.pth")
 CLASS_NAMES_PATH = os.path.join(BASE_DIR, "class_names.json")
 
