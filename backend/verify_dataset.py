@@ -1,7 +1,7 @@
 # backend/verify_dataset.py
 import os
 
-DATASET_PATH = "../dataset"
+DATASET_PATH = r"D:\UPDATED_AGRISMART\AGRISMART\AGRISMART\SIH - sak2\SIH - SAKSHAM\SIH - SAKSHAM\dataset"
 
 if not os.path.exists(DATASET_PATH):
     print(f"❌ Error: Path '{DATASET_PATH}' does not exist. Check your folder location.")
