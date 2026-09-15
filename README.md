@@ -41,9 +41,8 @@ AgriSmart AI is a full-stack web application that lets a farmer photograph a cro
 | C. Weather-Based Intelligence | ✅ Implemented |
 | E. Farmer Assistant (GenAI chatbot) | ✅ Implemented |
 | F. IoT Integration | ✅ Implemented (simulated sensor feed, as explicitly permitted by the problem statement) |
-| A. Crop Recommendation | 🚧 UI scaffold present — backend logic in progress |
-| D. Sustainability Score | 🚧 UI scaffold present — backend logic in progress |
-| G. Agentic Advisor | 🚧 UI scaffold present — decision loop in progress |
+| D. Sustainability Score |  ✅ Implemented |
+| G. Agentic Advisor |  ✅ Implemented |
 
 ## Setup & Run Instructions
 
